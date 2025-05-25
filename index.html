@@ -47,7 +47,7 @@
       object-fit: contain;
       background: #f4f4f4;
       padding: 1rem 0;
-      cursor: zoom-in;
+      cursor: pointer;
     }
     .center {
       text-align: center;
@@ -59,10 +59,6 @@
     h2 {
       font-size: 1.4rem;
       margin-bottom: 1rem;
-    }
-    p.subtle {
-      font-size: 1.1rem;
-      color: var(--gray);
     }
     .highlight {
       font-size: 1.2rem;
@@ -83,28 +79,26 @@
       gap: 1rem;
       padding-top: 2rem;
     }
+    .gallery-item {
+      position: relative;
+    }
     .gallery img {
       width: 100%;
       height: 500px;
       object-fit: contain;
       background: #f4f4f4;
-      cursor: zoom-in;
+      cursor: pointer;
     }
-    iframe.map {
+    .caption {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
       width: 100%;
-      height: 300px;
-      border: none;
-      margin-top: 1rem;
-      border-radius: 10px;
-    }
-    .rsvp-btn {
-      display: inline-block;
-      background: black;
+      text-align: center;
+      font-size: 0.9rem;
       color: white;
-      padding: 1rem 2rem;
-      border-radius: 999px;
-      text-decoration: none;
-      font-size: 1rem;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 0.5rem 0;
     }
     .lightbox {
       display: none;
@@ -114,13 +108,34 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.9);
       justify-content: center;
       align-items: center;
+      flex-direction: column;
     }
     .lightbox img {
       max-width: 95%;
-      max-height: 90vh;
+      max-height: 80vh;
+      margin-bottom: 1rem;
+    }
+    .lightbox .caption {
+      color: #fff;
+      font-size: 1rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .lightbox .controls {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .lightbox button {
+      background: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -135,7 +150,7 @@
       <h1>김준 ♡ 백수연</h1>
     </section>
     <section class="hero center">
-      <img src="img/photo8.jpg" alt="메인사진" onclick="openLightbox(this.src)">
+      <img src="img/photo8.jpg" alt="메인사진" onclick="openLightbox(8, 'ko')">
       <p class="highlight">2025년 9월 20일 (토)<br>여의도 켄싱턴 호텔 15층</p>
     </section>
 
@@ -148,44 +163,105 @@
       <p>한국까지 먼 길 와주시는 것만으로도 감사한 마음입니다. 항공비를 챙겨드릴 수 없는 대신, 축의금은 사양하오니 즐거운 한국 여행 중 잠시 들러주시는 것만으로도 큰 기쁨입니다.</p>
     </section>
 
-    <section class="gallery">
-      <script>
-        for (let i = 1; i <= 30; i++) {
-          document.write(`<img src="img/photo${i}.jpg" alt="갤러리 이미지 ${i}" onclick="openLightbox(this.src)">`);
-        }
-      </script>
-    </section>
-
-    <section class="center">
-      <h2>오시는 길</h2>
-      <p>서울특별시 영등포구 의사당대로 16<br>여의도 켄싱턴 호텔 15층</p>
-      <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.162040450417!2d126.9206913!3d37.5265696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9ef5e9b9f3ef%3A0x5fc6786eb795c353!2z7J2867O06rWQIOyViOyngOyLnCDrhbztmLjrtoDshKDrjIDroZwgMTXsi5w!5e0!3m2!1sko!2skr!4v1716612345678" allowfullscreen=""></iframe>
-    </section>
-
-    <section class="center">
-      <h2>참석 여부 전달</h2>
-      <a href="https://forms.gle/your-google-form-link" target="_blank" class="rsvp-btn">참석 의사 전달하기</a>
-    </section>
+    <section class="gallery" id="gallery-ko"></section>
   </div>
 
-  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <div id="content-ja" class="container" style="display:none; font-family: var(--jp-font);">
+    <section class="center">
+      <h1>金 晙 ♡ 白 秀連</h1>
+    </section>
+    <section class="hero center">
+      <img src="img/photo8.jpg" alt="メイン写真" onclick="openLightbox(8, 'ja')">
+      <p class="highlight">2025年9月20日(土)<br>ヨイド ケンジントンホテル15階</p>
+    </section>
+
+    <section class="center">
+      <h2>ご出席を心よりお待ちしております</h2>
+      <p class="highlight">キム・ソンフンとチャ・ジョンウンの長男 キム・ジュン<br>ペク・インギとパク・ヒョンスクの次女 ペク・スヨン</p>
+    </section>
+
+    <section class="note">
+      <p>日本からお越しいただく皆さまへ。ご祝儀はどうぞお気遣いなくお越しください。韓国までのご移動だけでも大変感謝しております。楽しい旅の合間に少し立ち寄っていただけたら幸いです。</p>
+    </section>
+
+    <section class="gallery" id="gallery-ja"></section>
+  </div>
+
+  <div class="lightbox" id="lightbox">
     <img id="lightbox-img" src="" alt="확대 이미지">
+    <div class="caption" id="lightbox-caption"></div>
+    <div class="controls">
+      <button onclick="prevImage()">← 이전</button>
+      <button onclick="closeLightbox()">닫기</button>
+      <button onclick="nextImage()">다음 →</button>
+    </div>
   </div>
 
   <script>
+    const captionsKo = Array(31).fill('202X년 X월 X일 ㅁㅁ에서');
+    const captionsJa = Array(31).fill('202X年X月X日、○○にて');
+    let currentIndex = 1;
+    let currentLang = 'ko';
+
     function switchLang(lang) {
-      document.getElementById('content-ko').style.display = (lang === 'ko') ? 'block' : 'none';
-      document.getElementById('content-ja').style.display = (lang === 'ja') ? 'block' : 'none';
+      document.getElementById('content-ko').style.display = lang === 'ko' ? 'block' : 'none';
+      document.getElementById('content-ja').style.display = lang === 'ja' ? 'block' : 'none';
     }
-    function openLightbox(src) {
+
+    function openLightbox(index, lang) {
+      currentIndex = index;
+      currentLang = lang;
       const lightbox = document.getElementById('lightbox');
-      const lightboxImg = document.getElementById('lightbox-img');
+      const img = document.getElementById('lightbox-img');
+      const caption = document.getElementById('lightbox-caption');
+      img.src = `img/photo${index}.jpg`;
+      caption.textContent = lang === 'ko' ? captionsKo[index] : captionsJa[index];
       lightbox.style.display = 'flex';
-      lightboxImg.src = src;
     }
+
     function closeLightbox() {
       document.getElementById('lightbox').style.display = 'none';
     }
+
+    function prevImage() {
+      if (currentIndex > 1) openLightbox(currentIndex - 1, currentLang);
+    }
+
+    function nextImage() {
+      if (currentIndex < 30) openLightbox(currentIndex + 1, currentLang);
+    }
+
+    // 스와이프 지원
+    let startX = 0;
+    const lightbox = document.getElementById('lightbox');
+    lightbox.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+    lightbox.addEventListener('touchend', e => {
+      const deltaX = e.changedTouches[0].clientX - startX;
+      if (deltaX > 50) prevImage();
+      else if (deltaX < -50) nextImage();
+    });
+
+    // 이미지 갤러리 생성
+    function createGallery(lang) {
+      const container = document.getElementById('gallery-' + lang);
+      const captions = lang === 'ko' ? captionsKo : captionsJa;
+      for (let i = 1; i <= 30; i++) {
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        const img = document.createElement('img');
+        img.src = `img/photo${i}.jpg`;
+        img.alt = `photo${i}`;
+        img.onclick = () => openLightbox(i, lang);
+        const cap = document.createElement('div');
+        cap.className = 'caption';
+        cap.textContent = captions[i];
+        item.appendChild(img);
+        item.appendChild(cap);
+        container.appendChild(item);
+      }
+    }
+    createGallery('ko');
+    createGallery('ja');
   </script>
 </body>
 </html>
