@@ -69,8 +69,15 @@
     </section>
     <section>
       <h2>갤러리</h2>
-      <div class="thumbnails" id="thumbnails-ko" style="display:flex; overflow-x:auto; gap:0.3rem; justify-content:center; opacity:0.6; padding-bottom:1rem;"></div>
-    </section>
+      <section>
+  <h2>갤러리</h2>
+  <div class="gallery-wrapper">
+    <div class="main-image">
+      <img id="main-ko" src="img/photo1.jpg" alt="갤러리 메인 이미지" style="width:100%; max-height:500px; object-fit:contain; padding: 20px 0; background:white;" />
+    </div>
+    <div class="thumbnails" id="thumbnails-ko" style="display:flex; overflow-x:auto; gap:0.3rem; justify-content:flex-start; padding-bottom:1rem;"></div>
+  </div>
+</section>
     <section>
       <h2>오시는 길</h2>
       <p style="text-align:center">서울특별시 영등포구 의사당대로 16<br>여의도 켄싱턴 호텔 15층</p>
@@ -115,7 +122,9 @@
       <div class="form-title">메모</div>
       <textarea name="entry.567890"></textarea>
     </div>
-    <button type="submit"><i class="fas fa-paper-plane"></i> 제출하기</button>
+    <button type="submit" style="background:#6b4f3b; color:white; padding:0.8rem 2rem; border:none; border-radius:25px; font-size:1.1rem; font-weight:bold; box-shadow:2px 2px 5px rgba(0,0,0,0.1);">
+  <i class="fas fa-envelope-open-text"></i> 送信する
+</button>
   </form>
 </section>
 </div>
@@ -135,15 +144,20 @@
     </section>
     <section>
       <h2>ギャラリー</h2>
-      <div class="thumbnails" id="thumbnails-ja" style="display:flex; overflow-x:auto; gap:0.3rem; justify-content:center; opacity:0.6; padding-bottom:1rem;"></div>
+      <div class="gallery-wrapper">
+        <div class="main-image">
+          <img id="main-ja" src="img/photo1.jpg" alt="ギャラリーメイン画像" style="width:100%; max-height:500px; object-fit:contain; padding: 20px 0; background:white;" />
+        </div>
+        <div class="thumbnails" id="thumbnails-ja" style="display:flex; overflow-x:auto; gap:0.3rem; justify-content:flex-start; padding-bottom:1rem;"></div>
+      </div>
     </section>
     <section>
       <h2>アクセス</h2>
       <p style="text-align:center">ソウル特別市 永登浦区 議事堂大路 16<br>汝矣島 ケンジントンホテル 15階</p>
-      <iframe class="map" style="width:100%; height:300px; border:none; border-radius:10px;" src="https://maps.google.com/maps?q=여의도%20ケンジントンホテル&t=&z=17&ie=UTF8&iwloc=&output=embed"></iframe>
+      <iframe class="map" style="width:100%; height:300px; border:none; border-radius:10px;" src="https://maps.google.com/maps?q=여의도%20켄싱턴호텔&t=&z=17&ie=UTF8&iwloc=&output=embed"></iframe>
       <p style="text-align:center">
         <a href="https://map.naver.com/v5/search/여의도%20켄싱턴호텔">Naver Map</a><br>
-        <a href="https://www.google.com/maps?q=여의도+ケンジントンホテル">Google Map</a>
+        <a href="https://www.google.com/maps?q=여의도+켄싱턴호텔">Google Map</a>
       </p>
     </section>
     <section>
@@ -156,46 +170,62 @@
         それだけで私たちにとって大きな贈り物です。
       </p>
     </section>
-<section>
-  <h2>出席のご連絡</h2>
-  <form action="https://docs.google.com/forms/d/e/your-form-id/formResponse" method="POST" target="_blank">
-    <div class="form-group">
-      <div class="form-title">お名前</div>
-      <input type="text" name="entry.123456" required>
-    </div>
-    <div class="form-group">
-      <div class="form-title">出欠</div>
-      <label><input type="radio" name="entry.234567" value="出席"> 出席</label>
-      <label><input type="radio" name="entry.234567" value="欠席"> 欠席</label>
-    </div>
-    <div class="form-group">
-      <div class="form-title">同行家族人数</div>
-      <input type="number" name="entry.345678" min="0">
-    </div>
-    <div class="form-group">
-      <div class="form-title">食事可否（12:00〜13:00 ウェディングホールでコース料理予定）</div>
-      <label><input type="radio" name="entry.456789" value="食事あり"> あり</label>
-      <label><input type="radio" name="entry.456789" value="食事なし"> なし</label>
-    </div>
-    <div class="form-group">
-      <div class="form-title">メッセージ</div>
-      <textarea name="entry.567890"></textarea>
-    </div>
-    <button type="submit"><i class="fas fa-paper-plane"></i> 送信する</button>
-  </form>
-</section>
-</div>
+    <section>
+      <h2>出席のご連絡</h2>
+      <form action="https://docs.google.com/forms/d/e/your-form-id/formResponse" method="POST" target="_blank">
+        <div class="form-group">
+          <div class="form-title">お名前</div>
+          <input type="text" name="entry.123456" required>
+        </div>
+        <div class="form-group">
+          <div class="form-title">出欠</div>
+          <label><input type="radio" name="entry.234567" value="出席"> 出席</label>
+          <label><input type="radio" name="entry.234567" value="欠席"> 欠席</label>
+        </div>
+        <div class="form-group">
+          <div class="form-title">同行家族人数</div>
+          <input type="number" name="entry.345678" min="0">
+        </div>
+        <div class="form-group">
+          <div class="form-title">食事可否（12:00〜13:00 ウェディングホールでコース料理予定）</div>
+          <label><input type="radio" name="entry.456789" value="食事あり"> あり</label>
+          <label><input type="radio" name="entry.456789" value="食事なし"> なし</label>
+        </div>
+        <div class="form-group">
+          <div class="form-title">メッセージ</div>
+          <textarea name="entry.567890"></textarea>
+        </div>
+        <button type="submit" style="background:#6b4f3b; color:white; padding:0.8rem 2rem; border:none; border-radius:25px; font-size:1.1rem; font-weight:bold; box-shadow:2px 2px 5px rgba(0,0,0,0.1);">
+          <i class="fas fa-envelope-open-text"></i> 送信する
+        </button>
+      </form>
+    </section>
+  </div>
+
 <script>
     function switchLang(lang) {
       document.querySelectorAll('.lang-section').forEach(el => el.classList.remove('active'));
       document.getElementById(lang).classList.add('active');
     }
 
-    function loadGallery(thumbId) {
-      const thumbs = document.getElementById(thumbId);
-      for (let i = 1; i <= 30; i++) {
-        const img = new Image();
-        img.src = `img/photo${i}.jpg`;
+    function loadGallery(thumbId, mainId) {
+  const thumbs = document.getElementById(thumbId);
+  const main = document.getElementById(mainId);
+  for (let i = 1; i <= 30; i++) {
+    const img = new Image();
+    img.src = `img/photo${i}.jpg`;
+    img.onload = () => {
+      const thumb = document.createElement('img');
+      thumb.src = img.src;
+      thumb.style.height = '60px';
+      thumb.style.cursor = 'pointer';
+      thumb.onclick = () => {
+        main.src = img.src;
+      };
+      thumbs.appendChild(thumb);
+    };
+  }
+}.jpg`;
         img.onload = () => {
           const thumb = document.createElement('img');
           thumb.src = img.src;
@@ -207,8 +237,8 @@
       }
     }
 
-    loadGallery('thumbnails-ko');
-    loadGallery('thumbnails-ja');
+    loadGallery('thumbnails-ko', 'main-ko');
+    loadGallery('thumbnails-ja', 'main-ja');
   </script>
 </body>
 </html>
