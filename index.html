@@ -255,16 +255,27 @@
 let currentIndex = { ko: 0, ja: 0 };
 const maxImages = 30;
 
+// loadGallery 내부 로직을 보완하여 broken image 방지 및 next/prev 시 실제 존재하는 이미지만 참조하도록 개선
+
+// 새로운 배열에 로드 성공한 이미지 경로 저장
+const galleryImages = { ko: [], ja: [] };
+
 function loadGallery(thumbId, mainId) {
   const thumbs = document.getElementById(thumbId);
   const main = document.getElementById(mainId);
   thumbs.innerHTML = '';
+  const lang = thumbId.includes('ko') ? 'ko' : 'ja';
+  galleryImages[lang] = [];
   let firstLoaded = false;
+
   for (let i = 1; i <= maxImages; i++) {
     const path = `img/photo${i}.jpg`;
     const img = new Image();
+
     img.onload = () => {
       if (!img.complete || img.naturalWidth === 0) return;
+      galleryImages[lang].push(path);
+
       const thumb = document.createElement('img');
       thumb.src = path;
       thumb.alt = `photo${i}`;
@@ -274,46 +285,35 @@ function loadGallery(thumbId, mainId) {
       thumb.style.marginRight = '0.3rem';
       thumb.onclick = () => {
         main.src = path;
-        currentIndex[thumbId.includes('ko') ? 'ko' : 'ja'] = i - 1;
-        updateArrows(thumbId.includes('ko') ? 'ko' : 'ja');
+        currentIndex[lang] = galleryImages[lang].indexOf(path);
       };
       thumbs.appendChild(thumb);
+
       if (!firstLoaded) {
         main.src = path;
-        currentIndex[thumbId.includes('ko') ? 'ko' : 'ja'] = i - 1;
-        updateArrows(thumbId.includes('ko') ? 'ko' : 'ja');
+        currentIndex[lang] = 0;
         firstLoaded = true;
       }
     };
+
     img.onerror = () => {
-      // 이미지가 없으면 무시
+      // broken image 무시
     };
+
     img.src = path;
   }
 }
 
 function nextImage(lang) {
-  currentIndex[lang] = (currentIndex[lang] + 1) % maxImages;
-  const nextSrc = `img/photo${currentIndex[lang] + 1}.jpg`;
-  document.getElementById(`main-${lang}`).src = nextSrc;
+  if (galleryImages[lang].length === 0) return;
+  currentIndex[lang] = (currentIndex[lang] + 1) % galleryImages[lang].length;
+  document.getElementById(`main-${lang}`).src = galleryImages[lang][currentIndex[lang]];
 }
 
 function prevImage(lang) {
-  currentIndex[lang] = (currentIndex[lang] - 1 + maxImages) % maxImages;
-  const prevSrc = `img/photo${currentIndex[lang] + 1}.jpg`;
-  document.getElementById(`main-${lang}`).src = prevSrc;
-}
-
-function updateArrows(lang) {
-  const leftBtn = document.querySelector(`#main-${lang}`).parentElement.querySelector('.gallery-controls.left');
-  const rightBtn = document.querySelector(`#main-${lang}`).parentElement.querySelector('.gallery-controls.right');
-  leftBtn.style.visibility = 'visible';
-  rightBtn.style.visibility = 'visible';
-}
-
-function switchLang(lang) {
-  document.querySelectorAll('.lang-section').forEach(el => el.classList.remove('active'));
-  document.getElementById(lang).classList.add('active');
+  if (galleryImages[lang].length === 0) return;
+  currentIndex[lang] = (currentIndex[lang] - 1 + galleryImages[lang].length) % galleryImages[lang].length;
+  document.getElementById(`main-${lang}`).src = galleryImages[lang][currentIndex[lang]];
 }
 
 // 초기 로딩
