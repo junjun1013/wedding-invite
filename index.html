@@ -1,206 +1,125 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>김준 ♡ 백수연 모바일 청첩장</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&family=Noto+Serif+JP&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary-font: 'Noto Serif KR', serif;
+      --jp-font: 'Noto Serif JP', serif;
+      --gray: #444;
+      --border: #ccc;
+    }
     body {
-      font-family: 'Noto Serif KR', 'Noto Serif JP', serif;
+      font-family: var(--primary-font);
       margin: 0;
       background: #fff;
       color: #333;
       line-height: 1.8;
     }
-    section {
-      padding: 2rem 1rem;
+    .container {
       max-width: 700px;
       margin: auto;
-      border-bottom: 1px solid #ccc;
-    }
-    h2 {
-      text-align: center;
-      font-size: 1.6rem;
-      margin-bottom: 1rem;
-      letter-spacing: 0.1rem;
-    }
-    .subtle {
-      font-size: 0.9rem;
-      color: #777;
-    }
-    .hero {
-      text-align: center;
-    }
-    .hero img {
-      width: 100%;
-      height: auto;
-    }
-    .invitation p, .map-info p, .note p, .rsvp p {
-      text-align: center;
-      white-space: pre-line;
-    }
-    .gallery {
-      text-align: center;
-    }
-    .gallery img.main {
-      width: 100%;
-      max-height: 500px;
-      object-fit: contain;
-    }
-    .thumbs {
-      display: flex;
-      overflow-x: auto;
-      gap: 0.5rem;
-      justify-content: center;
-      padding: 1rem 0;
-    }
-    .thumbs img {
-      height: 80px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .rsvp-btn {
-      display: block;
-      margin: 2rem auto;
-      background: black;
-      color: white;
       padding: 1rem;
-      text-align: center;
-      border-radius: 999px;
-      width: 80%;
-      max-width: 300px;
-      text-decoration: none;
     }
     .lang-toggle {
       display: flex;
       justify-content: center;
       gap: 1rem;
-      margin-top: 1rem;
+      margin: 1rem 0;
     }
     .lang-toggle button {
       background: #eee;
-      border: 1px solid #ccc;
+      border: 1px solid var(--border);
       border-radius: 20px;
       padding: 0.5rem 1rem;
       cursor: pointer;
     }
+    section {
+      padding: 2rem 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero img {
+      width: 100%;
+      height: auto;
+    }
+    .center {
+      text-align: center;
+    }
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    p.subtle {
+      font-size: 1.1rem;
+      color: var(--gray);
+    }
+    .highlight {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #222;
+    }
     .note {
       background-color: #f9f9f9;
-      border-left: 4px solid #ccc;
+      border-left: 4px solid var(--border);
       padding: 1rem;
-      margin: 2rem 1rem;
-      font-size: 0.95rem;
-    }
-    iframe.map {
-      width: 100%;
-      height: 300px;
-      border: none;
-      margin-top: 1rem;
-      border-radius: 10px;
+      margin-top: 2rem;
+      font-size: clamp(0.9rem, 1.8vw, 1rem);
+      text-align: center;
     }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&family=Noto+Serif+KR&display=swap" rel="stylesheet">
 </head>
 <body>
-
   <div class="lang-toggle">
     <button onclick="switchLang('ko')">한국어</button>
     <button onclick="switchLang('ja')">日本語</button>
   </div>
 
-  <div id="content-ko">
-    <section class="hero">
+  <div id="content-ko" class="container">
+    <section class="hero center">
       <img src="img/photo8.jpg" alt="메인사진">
-      <h2>김 준 / 백 수연</h2>
-      <p><strong>9월 20일</strong> 토요일 오후 1시 30분<br>여의도 켄싱턴 호텔 15층</p>
+      <h1>김준 ♡ 백수연</h1>
+      <p class="highlight">2025년 9월 20일 (토)<br>여의도 켄싱턴 호텔 15층</p>
     </section>
 
-    <section class="invitation">
-      <h2>이제 서로, 평생 함께</h2>
-      <p>서로가 마주보며 다져온 사랑을<br>이제 함께 한 곳을 바라보며<br>걸어갈 수 있는 큰 사랑으로 키우고자 합니다.<br>
-      저희 두 사람이 사랑의 이름으로 지켜나갈 수 있도록<br>앞날을 축복해 주시면 감사하겠습니다.</p>
-      <p class="subtle">김성훈 · 차정은의 장남 <strong>김준</strong><br>백인기 · 박현숙의 차녀 <strong>백수연</strong></p>
-      <p><em>소중한 당신을 초대합니다</em></p>
+    <section class="center">
+      <h2>소중한 당신을 초대합니다</h2>
+      <p class="highlight">김성훈 · 차정은의 장남 김준<br>백인기 · 박현숙의 차녀 백수연</p>
     </section>
 
     <section class="note">
-      <p>한국까지 먼 길 와주시는 것만으로도 감사한 마음입니다.<br>
-      항공비를 챙겨드릴 수 없는 대신, 축의금은 사양하오니<br>
-      즐거운 한국 여행 중 잠시 들러주시는 것만으로도 큰 기쁨입니다.</p>
+      <p>한국까지 먼 길 와주시는 것만으로도 감사한 마음입니다. 항공비를 챙겨드릴 수 없는 대신, 축의금은 사양하오니 즐거운 한국 여행 중 잠시 들러주시는 것만으로도 큰 기쁨입니다.</p>
     </section>
   </div>
 
-  <div id="content-ja" style="display:none">
-    <section class="hero">
-      <img src="img/photo1.jpg" alt="メイン画像">
-      <h2>キム・ジュン / ペク・スヨン</h2>
-      <p><strong>9月20日(土)</strong> 午後1時30分<br>ヨイド ケンジントンホテル 15階</p>
+  <div id="content-ja" class="container" style="display: none; font-family: var(--jp-font)">
+    <section class="hero center">
+      <img src="img/photo8.jpg" alt="メイン画像">
+      <h1>キム・ジュン ♡ ペク・スヨン</h1>
+      <p class="highlight">2025年9月20日(土)<br>ヨイド ケンジントンホテル 15階</p>
     </section>
 
-    <section class="invitation">
-      <h2>これからの人生を共に</h2>
-      <p>向き合い育んできた愛を、<br>これからは同じ未来を見つめながら、<br>より大きな愛へと育てていきたいと思います。<br>
-      二人の門出をあたたかく見守っていただければ幸いです。</p>
-      <p class="subtle">キム・ソンフン & チャ・ジョンウンの長男 キム・ジュン<br>ペク・インギ & パク・ヒョンスクの次女 ペク・スヨン</p>
-      <p><em>ご出席を心よりお待ちしております。</em></p>
+    <section class="center">
+      <h2>ご出席を心よりお待ちしております</h2>
+      <p class="highlight">キム・ソンフンとチャ・ジョンウンの長男 キム・ジュン<br>ペク・インギとパク・ヒョンスクの次女 ペク・スヨン</p>
     </section>
 
     <section class="note">
-      <p>日本からお越しいただく皆さまへ<br>
-      ご祝儀はどうぞお気遣いなくお越しください。<br>
-      韓国までのご移動だけでも大変感謝しております。<br>
-      楽しい旅の合間に少し立ち寄っていただけたら幸いです。</p>
+      <p>日本からお越しいただく皆さまへ。ご祝儀はどうぞお気遣いなくお越しください。韓国までのご移動だけでも大変感謝しております。楽しい旅の合間に少し立ち寄っていただけたら幸いです。</p>
     </section>
   </div>
-
-  <section class="gallery">
-    <h2>갤러리 / ギャラリー</h2>
-    <img id="main-photo" class="main" src="img/photo1.jpg" alt="갤러리 메인">
-    <div class="thumbs">
-      <img src="img/photo1.jpg" onclick="changeMain('img/photo1.jpg')">
-      <img src="img/photo2.jpg" onclick="changeMain('img/photo2.jpg')">
-      <img src="img/photo3.jpg" onclick="changeMain('img/photo3.jpg')">
-      <img src="img/photo4.jpg" onclick="changeMain('img/photo4.jpg')">
-      <img src="img/photo5.jpg" onclick="changeMain('img/photo5.jpg')">
-    </div>
-    <p class="subtle">이미지를 클릭하시면 확대보기가 가능합니다。</p>
-  </section>
-
-  <section class="map-info">
-    <h2>오시는 길 / アクセス</h2>
-    <p><strong>여의도 켄싱턴 호텔 15층</strong><br>
-    서울특별시 영등포구 의사당대로 16<br>
-    Tel. 02-1234-5678</p>
-    <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.162040450417!2d126.9206913!3d37.5265696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9ef5e9b9f3ef%3A0x5fc6786eb795c353!2z7J2867O06rWQIOyViOyngOyLnCDrhbztmLjrtoDshKDrjIDroZwgMTXsi5w!5e0!3m2!1sko!2skr!4v1716612345678" allowfullscreen=""></iframe>
-  </section>
-
-  <section class="rsvp">
-    <h2>참석 여부 전달 / 出席のご連絡</h2>
-    <form action="https://docs.google.com/forms/d/e/your-form-id/formResponse" method="POST" target="_blank">
-      <p>이름 / お名前<br><input type="text" name="entry.111111111" required></p>
-      <p>참석 여부 / 出席可否<br>
-        <label><input type="radio" name="entry.222222222" value="참석"> 참석</label>
-        <label><input type="radio" name="entry.222222222" value="불참"> 불참</label>
-      </p>
-      <p>동행 인원 / 同行人数<br><input type="number" name="entry.333333333" min="1"></p>
-      <p>식사 여부 / 食事希望<br>
-        <label><input type="radio" name="entry.444444444" value="식사 가능"> 식사 가능</label>
-        <label><input type="radio" name="entry.444444444" value="식사 불가"> 식사 불가</label>
-      </p>
-      <p>추가 전달사항 / メッセージ<br><textarea name="entry.555555555"></textarea></p>
-      <button type="submit" class="rsvp-btn">제출하기 / 送信</button>
-    </form>
-  </section>
 
   <script>
-    function changeMain(src) {
-      document.getElementById('main-photo').src = src;
-    }
     function switchLang(lang) {
       document.getElementById('content-ko').style.display = (lang === 'ko') ? 'block' : 'none';
       document.getElementById('content-ja').style.display = (lang === 'ja') ? 'block' : 'none';
     }
   </script>
-
 </body>
 </html>
