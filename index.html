@@ -7,27 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Noto+Serif+JP&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
-  .thumbnails-wrapper {
-    position: relative;
-  }
-  .thumbnails::before,
-  .thumbnails::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 30px;
-    z-index: 2;
-    pointer-events: none;
-  }
-  .thumbnails::before {
-    left: 0;
-    background: linear-gradient(to right, #fdf8f5, rgba(253, 248, 245, 0));
-  }
-  .thumbnails::after {
-    right: 0;
-    background: linear-gradient(to left, #fdf8f5, rgba(253, 248, 245, 0));
-  }
     body {
       font-family: 'Nanum Myeongjo', 'Noto Serif JP', serif;
       margin: 0;
@@ -54,7 +33,7 @@
       display: flex;
       justify-content: center;
       gap: 1rem;
-      margin: 1rem;
+      margin: 0.5rem 0 0.3rem 0;
     }
     .lang-switch button {
       padding: 0.6rem 1.2rem;
@@ -67,279 +46,209 @@
     }
     .lang-section { display: none; }
     .lang-section.active { display: block; }
+    .form-title::before {
+      content: "\1F4CC ";
+    }
+    .thumbnails-wrapper {
+      position: relative;
+    }
+    .thumbnails::before,
+    .thumbnails::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 30px;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .thumbnails::before {
+      left: 0;
+      background: linear-gradient(to right, #fdf8f5, rgba(253, 248, 245, 0));
+    }
+    .thumbnails::after {
+      right: 0;
+      background: linear-gradient(to left, #fdf8f5, rgba(253, 248, 245, 0));
+    }
+    .form-title {
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-top: 1.5rem;
+      color: #5a4032;
+    }
+    .map-section h3::before {
+      content: "LOCATION\A";
+      font-size: 0.8rem;
+      color: #c3956b;
+      white-space: pre;
+      display: block;
+    }
+    .gallery-controls {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.7);
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 2;
+    }
+    .gallery-controls.left { left: 0.5rem; }
+    .gallery-controls.right { right: 0.5rem; }
+    .thumbnail-slide-container {
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .thumbnail-slide-container img {
+      height: 60px;
+      margin: 0 4px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    .rsvp-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #6b4f3b;
+      color: white;
+      padding: 0.8rem 1.4rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    .rsvp-button i {
+      margin-right: 0.5rem;
+    }
   </style>
 </head>
 <body>
-  <div class="lang-switch" style="margin-bottom: 0.25rem;">
+  <div class="lang-switch">
     <button onclick="switchLang('ko')"><i class="fas fa-language"></i> 한국어</button>
     <button onclick="switchLang('ja')"><i class="fas fa-globe-asia"></i> 日本語</button>
   </div>
 
-  <div id="ko" class="container lang-section active" style="margin-top: 0.5rem;">
+  <div id="ko" class="container lang-section active">
     <section>
       <h1>김준 ♡ 백수연</h1>
       <div class="main-image">
-        <img src="img/photo8.jpg" alt="메인사진" style="width:100%; max-height:360px; object-fit:contain; padding: 20px 0; background:white;" />
-        <p style="text-align:center; margin-top: 0.5rem; font-size: 1.1rem; color: #6b4f3b;">2025년 9월 20일 토요일<br>11:30 ~ 13:00</p></div>
+        <img src="img/photo8.jpg" alt="" style="width:100%; max-height:360px; object-fit:contain; padding: 20px 0; background:white;" />
+        <p style="text-align:center; margin-top: 0.5rem; font-size: 1.1rem; color: #6b4f3b;">2025년 9월 20일 토요일<br>11:30 ~ 13:00</p>
+      </div>
     </section>
     <section>
-      <h2>소중한 당신을 초대합니다</h2>
+      <h2>초대합니다</h2>
       <p style="text-align:center">
-        김성훈 · 차정은의 장남 김준<br>
-        백인기 · 박현숙의 차녀 백수연<br><br>
-        저희 두 사람의 새로운 시작을 함께해 주세요.
+        김성훈 · 차정은 의 장남 김준<br>
+        백인기 · 박현숙 의 장녀 백수연<br><br>
+        서로의 마음을 모아<br>
+        새로운 출발을 하려 합니다.<br>
+        소중한 분들을 모시고자 하오니<br>
+        함께 축복해 주시면 감사하겠습니다.
       </p>
     </section>
-      <section>
-  <h2>갤러리</h2>
-  <div class="gallery-wrapper">
-    <div class="main-image" style="position: relative; text-align: center;">
-        <button onclick="prevImage('ko')" style="position:absolute; top:50%; left:0; transform:translateY(-50%); background:none; border:none; font-size:2rem; color:#aaa; cursor:pointer;">❮</button>
-        <img id="main-ko" src="img/photo1.jpg" alt="" style="width:100%; height:400px; object-fit:contain; padding: 20px 0; background:white;" />
-        <button onclick="nextImage('ko')" style="position:absolute; top:50%; right:0; transform:translateY(-50%); background:none; border:none; font-size:2rem; color:#aaa; cursor:pointer;">❯</button>
-    </div>
-    <div class="thumbnails-wrapper" style="position:relative;">
-      <div class="thumbnails" id="thumbnails-ko" style="display:flex; overflow-x:auto; gap:0.3rem; justify-content:flex-start; padding-bottom:1rem; position:relative;"></div>
-  </div>
-</section>
     <section>
-      <h2>오시는 길</h2>
-      <p style="text-align:center">서울특별시 영등포구 의사당대로 16<br>여의도 켄싱턴 호텔 15층</p>
+      <h2>갤러리</h2>
+      <div class="gallery-wrapper">
+        <div class="main-image" style="position:relative; text-align:center;">
+          <button class="gallery-controls left" onclick="prevImage('ko')">❮</button>
+          <img id="main-ko" src="img/photo1.jpg" alt="" style="width:100%; height:400px; object-fit:contain; padding: 20px 0; background:white;" />
+          <button class="gallery-controls right" onclick="nextImage('ko')">❯</button>
+        </div>
+        <div class="thumbnails-wrapper">
+          <div class="thumbnails" id="thumbnails-ko" style="display:flex; overflow-x:auto; gap:0.3rem; justify-content:flex-start; padding-bottom:1rem;"></div>
+        </div>
+      </div>
+    </section>
+    <section class="map-section">
+      <h2><h3>찾아오시는 길</h3></h2>
+      <p style="text-align:center">서울특별시 영등포구 의사당대로 16<br>여의도 켄싱턴호텔 15층</p>
       <iframe class="map" style="width:100%; height:300px; border:none; border-radius:10px;" src="https://maps.google.com/maps?q=여의도%20켄싱턴호텔&t=&z=17&ie=UTF8&iwloc=&output=embed"></iframe>
       <p style="text-align:center">
-        <a href="https://map.naver.com/v5/search/여의도%20켄싱턴호텔">Naver Map</a><br>
-        <a href="https://www.google.com/maps?q=여의도+켄싱턴호텔">Google Map</a>
+        <a href="https://map.naver.com/v5/search/여의도%20켄싱턴호텔">네이버지도</a> · 
+        <a href="https://tmap.co.kr">티맵</a> · 
+        <a href="https://kakaonavi.kakao.com">카카오내비</a>
       </p>
     </section>
-    
-<section>
-  <h2>참석 여부 전달</h2>
-  <form action="https://docs.google.com/forms/d/e/your-form-id/formResponse" method="POST" target="_blank">
-    <div class="form-group">
-      <div class="form-title">이름</div>
-      <input type="text" name="entry.123456" required>
-    </div>
-    <div class="form-group">
-      <div class="form-title">참석 여부</div>
-      <label><input type="radio" name="entry.234567" value="참석"> 참석</label>
-      <label><input type="radio" name="entry.234567" value="불참"> 불참</label>
-    </div>
-    <div class="form-group">
-      <div class="form-title">동반가족인수</div>
-      <input type="number" name="entry.345678" min="0">
-    </div>
-    <div class="form-group">
-      <div class="form-title">식사 여부 (12:00~13:00 웨딩홀 코스요리 제공예정)</div>
-      <label><input type="radio" name="entry.456789" value="식사 가능"> 가능</label>
-      <label><input type="radio" name="entry.456789" value="식사 불가"> 불가</label>
-    </div>
-    <div class="form-group">
-      <div class="form-title">메모</div>
-      <textarea name="entry.567890"></textarea>
-    </div>
-    <button type="submit" style="background:#6b4f3b; color:white; padding:0.8rem 2rem; border:none; border-radius:25px; font-size:1.1rem; font-weight:bold; box-shadow:2px 2px 5px rgba(0,0,0,0.1);">
-  <i class="fas fa-envelope-open-text"></i> 送信する
-</button>
-  </form>
-</section>
-</div>
+    <section>
+      <h2>참석 여부 전달</h2>
+      <form action="https://docs.google.com/forms/d/e/your-form-id/formResponse" method="POST" target="_blank">
+        <div class="form-title">📝 이름</div>
+        <input type="text" name="entry.123456" required>
+        <div class="form-title">💌 참석 여부</div>
+        <label><input type="radio" name="entry.234567" value="참석"> 참석</label>
+        <label><input type="radio" name="entry.234567" value="불참"> 불참</label>
+        <div class="form-title">👨‍👩‍👧 동반가족인수</div>
+        <input type="number" name="entry.345678" min="0">
+        <div class="form-title">🍽 식사 여부 (12:00~13:00 웨딩홀 코스요리 제공예정)</div>
+        <label><input type="radio" name="entry.456789" value="식사 가능"> 가능</label>
+        <label><input type="radio" name="entry.456789" value="식사 불가"> 불가</label>
+        <div class="form-title">💬 메모</div>
+        <textarea name="entry.567890"></textarea>
+        <button type="submit" class="rsvp-button"><i class="fas fa-paper-plane"></i> 제출하기</button>
+      </form>
+    </section>
+  </div>
 
   <div id="ja" class="container lang-section">
     <section>
       <h1>キム・ジュン ♡ ペク・スヨン</h1>
       <div class="main-image">
-        <img src="img/photo8.jpg" alt="メイン写真" style="width:100%; max-height:360px; object-fit:contain; padding: 20px 0; background:white;" />
-        <p style="text-align:center; margin-top: 0.5rem; font-size: 1.1rem; color: #6b4f3b;">2025年9月20日（土）<br>11:30〜13:00</p></div>
+        <img src="img/photo8.jpg" alt="" style="width:100%; max-height:360px; object-fit:contain; padding: 20px 0; background:white;" />
+        <p style="text-align:center; margin-top: 0.5rem; font-size: 1.1rem; color: #6b4f3b;">2025年9月20日（土）<br>11:30〜13:00</p>
+      </div>
     </section>
     <section>
-      <h2>ご招待の言葉</h2>
+      <h2>ご招待</h2>
       <p style="text-align:center">
-        キム・ソンフン・チャ・ジョンウンの長男 キム・ジュン<br>
-        ペク・インギ・パク・ヒョンスクの次女 ペク・スヨン<br><br>
-        私たちの新しい門出にぜひお立ち会いください。
+        キム・ソンフン、チャ・ジョンウンの長男 キム・ジュン<br>
+        ペク・インギ、パク・ヒョンスクの長女 ペク・スヨン<br><br>
+        互いの心を込めて<br>
+        新しい門出を迎えます。<br>
+        大切な皆様にぜひお越しいただき、<br>
+        温かく見守っていただければ幸いです。
       </p>
     </section>
     <section>
       <h2>ギャラリー</h2>
       <div class="gallery-wrapper">
-        <div class="main-image" style="position: relative; text-align: center;">
-        <button onclick="prevImage('ja')" style="position:absolute; top:50%; left:0; transform:translateY(-50%); background:none; border:none; font-size:2rem; color:#aaa; cursor:pointer;">❮</button>
-        <img id="main-ja" src="img/photo1.jpg" alt="" style="width:100%; height:400px; object-fit:contain; padding: 20px 0; background:white;" />
-        <button onclick="nextImage('ja')" style="position:absolute; top:50%; right:0; transform:translateY(-50%); background:none; border:none; font-size:2rem; color:#aaa; cursor:pointer;">❯</button>
+        <div class="main-image" style="position:relative; text-align:center;">
+          <button class="gallery-controls left" onclick="prevImage('ja')">❮</button>
+          <img id="main-ja" src="img/photo1.jpg" alt="" style="width:100%; height:400px; object-fit:contain; padding: 20px 0; background:white;" />
+          <button class="gallery-controls right" onclick="nextImage('ja')">❯</button>
         </div>
-        <div class="thumbnails-wrapper" style="position:relative;">
-      <div class="thumbnails" id="thumbnails-ja" style="display:flex; overflow-x:auto; gap:0.3rem; justify-content:flex-start; padding-bottom:1rem; position:relative;"></div>
+        <div class="thumbnails-wrapper">
+          <div class="thumbnails" id="thumbnails-ja" style="display:flex; overflow-x:auto; gap:0.3rem; justify-content:flex-start; padding-bottom:1rem;"></div>
+        </div>
       </div>
     </section>
-    <section>
-      <h2>アクセス</h2>
+    <section class="map-section">
+      <h2><h3>アクセス</h3></h2>
       <p style="text-align:center">ソウル特別市 永登浦区 議事堂大路 16<br>汝矣島 ケンジントンホテル 15階</p>
       <iframe class="map" style="width:100%; height:300px; border:none; border-radius:10px;" src="https://maps.google.com/maps?q=여의도%20켄싱턴호텔&t=&z=17&ie=UTF8&iwloc=&output=embed"></iframe>
       <p style="text-align:center">
-        <a href="https://map.naver.com/v5/search/여의도%20켄싱턴호텔">Naver Map</a><br>
-        <a href="https://www.google.com/maps?q=여의도+켄싱턴호텔">Google Map</a>
-      </p>
-    </section>
-    <section>
-      <h2>ご祝儀について</h2>
-      <p style="text-align:center">
-        遠く日本からお越しいただくだけでも心から感謝申し上げます。<br>
-        渡航のご負担もあるかと思いますので、<br>
-        ご祝儀はどうぞご無理なさらず、お気遣いなくお願いいたします。<br>
-        ご旅行の合間に少しだけお立ち寄りいただければ、<br>
-        それだけで私たちにとって大きな贈り物です。
+        <a href="https://map.naver.com/v5/search/여의도%20켄싱턴호텔">Naver Map</a> · 
+        <a href="https://tmap.co.kr">T Map</a> · 
+        <a href="https://kakaonavi.kakao.com">Kakao Navi</a>
       </p>
     </section>
     <section>
       <h2>出席のご連絡</h2>
       <form action="https://docs.google.com/forms/d/e/your-form-id/formResponse" method="POST" target="_blank">
-        <div class="form-group">
-          <div class="form-title">お名前</div>
-          <input type="text" name="entry.123456" required>
-        </div>
-        <div class="form-group">
-          <div class="form-title">出欠</div>
-          <label><input type="radio" name="entry.234567" value="出席"> 出席</label>
-          <label><input type="radio" name="entry.234567" value="欠席"> 欠席</label>
-        </div>
-        <div class="form-group">
-          <div class="form-title">同行家族人数</div>
-          <input type="number" name="entry.345678" min="0">
-        </div>
-        <div class="form-group">
-          <div class="form-title">食事可否（12:00〜13:00 ウェディングホールでコース料理予定）</div>
-          <label><input type="radio" name="entry.456789" value="食事あり"> あり</label>
-          <label><input type="radio" name="entry.456789" value="食事なし"> なし</label>
-        </div>
-        <div class="form-group">
-          <div class="form-title">メッセージ</div>
-          <textarea name="entry.567890"></textarea>
-        </div>
-        <button type="submit" style="background:#6b4f3b; color:white; padding:0.8rem 2rem; border:none; border-radius:25px; font-size:1.1rem; font-weight:bold; box-shadow:2px 2px 5px rgba(0,0,0,0.1);">
-          <i class="fas fa-envelope-open-text"></i> 送信する
-        </button>
+        <div class="form-title">📝 お名前</div>
+        <input type="text" name="entry.123456" required>
+        <div class="form-title">💌 出欠</div>
+        <label><input type="radio" name="entry.234567" value="出席"> 出席</label>
+        <label><input type="radio" name="entry.234567" value="欠席"> 欠席</label>
+        <div class="form-title">👨‍👩‍👧 同行家族人数</div>
+        <input type="number" name="entry.345678" min="0">
+        <div class="form-title">🍽 食事有無（12:00〜13:00 ウェディングホールでコース料理提供予定）</div>
+        <label><input type="radio" name="entry.456789" value="食事あり"> あり</label>
+        <label><input type="radio" name="entry.456789" value="食事なし"> なし</label>
+        <div class="form-title">💬 メッセージ</div>
+        <textarea name="entry.567890"></textarea>
+        <button type="submit" class="rsvp-button"><i class="fas fa-paper-plane"></i> 送信する</button>
       </form>
     </section>
   </div>
-
-<style>
-  .thumbnails-wrapper {
-    position: relative;
-  }
-  .thumbnails::before,
-  .thumbnails::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 30px;
-    z-index: 1;
-    pointer-events: none;
-  }
-  .thumbnails::before {
-    left: 0;
-    background: linear-gradient(to right, #fdf8f5, rgba(253, 248, 245, 0));
-  }
-  .thumbnails::after {
-    right: 0;
-    background: linear-gradient(to left, #fdf8f5, rgba(253, 248, 245, 0));
-  }
-</style>
-
-<script>
-  function switchLang(lang) {
-    document.querySelectorAll('.lang-section').forEach(el => el.classList.remove('active'));
-    document.getElementById(lang).classList.add('active');
-  }
-
-  let currentIndex = { ko: 0, ja: 0 };
-const maxImages = 30;
-
-function loadGallery(thumbId, mainId) {
-  const thumbs = document.getElementById(thumbId);
-  const main = document.getElementById(mainId);
-  thumbs.innerHTML = '';
-  for (let i = 1; i <= maxImages; i++) {
-    const path = `img/photo${i}.jpg`;
-    const img = new Image();
-    img.src = path;
-    img.onload = () => {
-      if (!img.complete || img.naturalWidth === 0) return;
-      const thumb = document.createElement('img');
-      thumb.src = path;
-      thumb.alt = `photo${i}`;
-      thumb.style.height = '60px';
-      thumb.style.cursor = 'pointer';
-      thumb.style.borderRadius = '4px';
-      thumb.style.marginRight = '0.3rem';
-      thumb.onclick = () => {
-        main.src = path;
-        currentIndex[thumbId.includes('ko') ? 'ko' : 'ja'] = i - 1;
-      };
-      thumbs.appendChild(thumb);
-    };
-    img.onerror = () => {};
-  }
-}
-
-  // 호출은 여기 한 번만 유지
-// 호출은 여기 한 번만 유지
-
-function nextImage(lang) {
-  currentIndex[lang] = (currentIndex[lang] + 1) % maxImages;
-  const imgPath = `img/photo${currentIndex[lang] + 1}.jpg`;
-  document.getElementById(`main-${lang}`).src = imgPath;
-}
-
-function prevImage(lang) {
-  currentIndex[lang] = (currentIndex[lang] - 1 + maxImages) % maxImages;
-  const imgPath = `img/photo${currentIndex[lang] + 1}.jpg`;
-  document.getElementById(`main-${lang}`).src = imgPath;
-}
-
-loadGallery('thumbnails-ko', 'main-ko');
-loadGallery('thumbnails-ja', 'main-ja');
-</script>
-<div id="lightbox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index:1000;">
-  <img id="lightbox-img" src="" alt="확대 이미지" style="max-width:90%; max-height:90%; border-radius:10px; box-shadow:0 0 20px rgba(0,0,0,0.5);">
-  <button onclick="closeLightbox()" style="position:absolute; top:20px; right:20px; font-size:2rem; background:none; color:white; border:none; cursor:pointer;">&times;</button>
-</div>
-
-<script>
-function openLightbox(src) {
-  const lightbox = document.getElementById('lightbox');
-  const img = document.getElementById('lightbox-img');
-  img.src = src;
-  lightbox.style.display = 'flex';
-}
-function closeLightbox() {
-  document.getElementById('lightbox').style.display = 'none';
-}
-
-['main-ko', 'main-ja'].forEach(id => {
-  const el = document.getElementById(id);
-  if (el) el.onclick = () => openLightbox(el.src);
-});
-// ✅ 모바일 터치 스와이프 기능 추가
-['main-ko', 'main-ja'].forEach(id => {
-  const el = document.getElementById(id);
-  if (!el) return;
-  let touchStartX = 0;
-  let touchEndX = 0;
-  const lang = id.includes('ko') ? 'ko' : 'ja';
-
-  el.addEventListener('touchstart', e => {
-    touchStartX = e.changedTouches[0].screenX;
-  });
-  el.addEventListener('touchend', e => {
-    touchEndX = e.changedTouches[0].screenX;
-    const diff = touchEndX - touchStartX;
-    if (Math.abs(diff) > 30) {
-      if (diff > 0) prevImage(lang);
-      else nextImage(lang);
-    }
-  });
-});
-</script>
-</body>
-</html>
