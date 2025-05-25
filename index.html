@@ -6,14 +6,8 @@
   <title>김준 ♡ 백수연 모바일 청첩장</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&family=Noto+Serif+JP&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --primary-font: 'Noto Serif KR', serif;
-      --jp-font: 'Noto Serif JP', serif;
-      --gray: #444;
-      --border: #ccc;
-    }
     body {
-      font-family: var(--primary-font);
+      font-family: 'Noto Serif KR', serif;
       margin: 0;
       background: #fff;
       color: #333;
@@ -24,54 +18,15 @@
       margin: auto;
       padding: 1rem;
     }
-    .lang-toggle {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin: 1rem 0;
-    }
-    .lang-toggle button {
-      background: #eee;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-    }
-    section {
-      padding: 2rem 1rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .hero img {
-      width: 100%;
-      height: 500px;
-      object-fit: contain;
-      background: #f4f4f4;
-      padding: 1rem 0;
-      cursor: pointer;
-    }
     .center {
       text-align: center;
     }
-    h1 {
-      font-size: 1.8rem;
-      margin-bottom: 0.5rem;
-    }
-    h2 {
-      font-size: 1.4rem;
-      margin-bottom: 1rem;
-    }
-    .highlight {
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #222;
-    }
-    .note {
-      background-color: #f9f9f9;
-      border-left: 4px solid var(--border);
-      padding: 1rem;
-      margin-top: 2rem;
-      font-size: clamp(0.9rem, 1.8vw, 1rem);
-      text-align: center;
+    .map {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 10px;
+      margin-top: 1rem;
     }
     .gallery {
       display: grid;
@@ -79,112 +34,90 @@
       gap: 1rem;
       padding-top: 2rem;
     }
-    .gallery-item {
-      position: relative;
-    }
-    .gallery img {
+    .gallery-item img {
       width: 100%;
       height: 500px;
       object-fit: contain;
       background: #f4f4f4;
       cursor: pointer;
     }
-    .caption {
-      position: absolute;
-      bottom: 10px;
-      left: 0;
-      width: 100%;
-      text-align: center;
-      font-size: 0.9rem;
-      color: white;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 0.5rem 0;
-    }
     .lightbox {
       display: none;
       position: fixed;
       z-index: 999;
-      left: 0;
       top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.9);
+      background: rgba(0, 0, 0, 0.9);
       justify-content: center;
       align-items: center;
       flex-direction: column;
     }
     .lightbox img {
-      max-width: 95%;
+      max-width: 90%;
       max-height: 80vh;
-      margin-bottom: 1rem;
     }
     .lightbox .caption {
-      color: #fff;
-      font-size: 1rem;
-      text-align: center;
-      margin-bottom: 1rem;
+      color: white;
+      margin-top: 1rem;
     }
     .lightbox .controls {
       display: flex;
-      justify-content: center;
       gap: 1rem;
+      margin-top: 1rem;
     }
     .lightbox button {
-      background: #fff;
-      border: none;
       padding: 0.5rem 1rem;
-      font-size: 1rem;
+      border: none;
       border-radius: 5px;
+      font-size: 1rem;
       cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <div class="lang-toggle">
-    <button onclick="switchLang('ko')">한국어</button>
-    <button onclick="switchLang('ja')">日本語</button>
-  </div>
-
-  <div id="content-ko" class="container">
+  <div class="container">
     <section class="center">
       <h1>김준 ♡ 백수연</h1>
     </section>
-    <section class="hero center">
-      <img src="img/photo8.jpg" alt="메인사진" onclick="openLightbox(8, 'ko')">
-      <p class="highlight">2025년 9월 20일 (토)<br>여의도 켄싱턴 호텔 15층</p>
-    </section>
-
-    <section class="center">
-      <h2>소중한 당신을 초대합니다</h2>
-      <p class="highlight">김성훈 · 차정은의 장남 김준<br>백인기 · 박현숙의 차녀 백수연</p>
-    </section>
-
-    <section class="note">
-      <p>한국까지 먼 길 와주시는 것만으로도 감사한 마음입니다. 항공비를 챙겨드릴 수 없는 대신, 축의금은 사양하오니 즐거운 한국 여행 중 잠시 들러주시는 것만으로도 큰 기쁨입니다.</p>
-    </section>
 
     <section class="gallery" id="gallery-ko"></section>
-  </div>
-
-  <div id="content-ja" class="container" style="display:none; font-family: var(--jp-font);">
-    <section class="center">
-      <h1>金 晙 ♡ 白 秀連</h1>
-    </section>
-    <section class="hero center">
-      <img src="img/photo8.jpg" alt="メイン写真" onclick="openLightbox(8, 'ja')">
-      <p class="highlight">2025年9月20日(土)<br>ヨイド ケンジントンホテル15階</p>
-    </section>
 
     <section class="center">
-      <h2>ご出席を心よりお待ちしております</h2>
-      <p class="highlight">キム・ソンフンとチャ・ジョンウンの長男 キム・ジュン<br>ペク・インギとパク・ヒョンスクの次女 ペク・スヨン</p>
+      <h2>오시는 길</h2>
+      <p>서울특별시 영등포구 의사당대로 16<br>여의도 켄싱턴 호텔 15층</p>
+      <iframe class="map" src="https://www.google.com/maps/embed?..." allowfullscreen></iframe>
+      <p>
+        <a href="https://map.naver.com/...?">네이버지도에서 보기</a><br>
+        <a href="https://www.google.com/maps?q=여의도+켄싱턴호텔">구글지도에서 보기</a>
+      </p>
     </section>
 
-    <section class="note">
-      <p>日本からお越しいただく皆さまへ。ご祝儀はどうぞお気遣いなくお越しください。韓国までのご移動だけでも大変感謝しております。楽しい旅の合間に少し立ち寄っていただけたら幸いです。</p>
+    <section class="center">
+      <h2>참석 여부 전달</h2>
+      <form action="https://docs.google.com/forms/d/e/your-form-id/formResponse" method="POST" target="_blank">
+        <p>이름 <input type="text" name="entry.123456" required></p>
+        <p>
+          참석 여부
+          <label><input type="radio" name="entry.234567" value="참석"> 참석</label>
+          <label><input type="radio" name="entry.234567" value="불참"> 불참</label>
+        </p>
+        <p>
+          동행 인원 <input type="number" name="entry.345678" min="0">
+        </p>
+        <p>
+          식사 여부
+          <label><input type="radio" name="entry.456789" value="식사 가능"> 가능</label>
+          <label><input type="radio" name="entry.456789" value="식사 불가"> 불가</label>
+        </p>
+        <p>
+          메모<br>
+          <textarea name="entry.567890"></textarea>
+        </p>
+        <button type="submit">제출하기</button>
+      </form>
     </section>
-
-    <section class="gallery" id="gallery-ja"></section>
   </div>
 
   <div class="lightbox" id="lightbox">
@@ -198,24 +131,33 @@
   </div>
 
   <script>
-    const captionsKo = Array(31).fill('202X년 X월 X일 ㅁㅁ에서');
-    const captionsJa = Array(31).fill('202X年X月X日、○○にて');
+    const availablePhotos = [1,2,3,4,5,6,7,8,9,10];
+    const captionsKo = [
+      '', '', '2024년 4월 제주도', '2024년 5월 카페', '2024년 6월 공원', '', '', '', '', ''
+    ];
     let currentIndex = 1;
-    let currentLang = 'ko';
 
-    function switchLang(lang) {
-      document.getElementById('content-ko').style.display = lang === 'ko' ? 'block' : 'none';
-      document.getElementById('content-ja').style.display = lang === 'ja' ? 'block' : 'none';
+    function createGallery() {
+      const container = document.getElementById('gallery-ko');
+      availablePhotos.forEach(i => {
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        const img = document.createElement('img');
+        img.src = `img/photo${i}.jpg`;
+        img.alt = `photo${i}`;
+        img.onclick = () => openLightbox(i);
+        item.appendChild(img);
+        container.appendChild(item);
+      });
     }
 
-    function openLightbox(index, lang) {
+    function openLightbox(index) {
       currentIndex = index;
-      currentLang = lang;
       const lightbox = document.getElementById('lightbox');
       const img = document.getElementById('lightbox-img');
       const caption = document.getElementById('lightbox-caption');
       img.src = `img/photo${index}.jpg`;
-      caption.textContent = lang === 'ko' ? captionsKo[index] : captionsJa[index];
+      caption.textContent = captionsKo[index] || '';
       lightbox.style.display = 'flex';
     }
 
@@ -224,14 +166,13 @@
     }
 
     function prevImage() {
-      if (currentIndex > 1) openLightbox(currentIndex - 1, currentLang);
+      if (currentIndex > 1) openLightbox(currentIndex - 1);
     }
 
     function nextImage() {
-      if (currentIndex < 30) openLightbox(currentIndex + 1, currentLang);
+      if (currentIndex < availablePhotos.length) openLightbox(currentIndex + 1);
     }
 
-    // 스와이프 지원
     let startX = 0;
     const lightbox = document.getElementById('lightbox');
     lightbox.addEventListener('touchstart', e => startX = e.touches[0].clientX);
@@ -241,27 +182,7 @@
       else if (deltaX < -50) nextImage();
     });
 
-    // 이미지 갤러리 생성
-    function createGallery(lang) {
-      const container = document.getElementById('gallery-' + lang);
-      const captions = lang === 'ko' ? captionsKo : captionsJa;
-      for (let i = 1; i <= 30; i++) {
-        const item = document.createElement('div');
-        item.className = 'gallery-item';
-        const img = document.createElement('img');
-        img.src = `img/photo${i}.jpg`;
-        img.alt = `photo${i}`;
-        img.onclick = () => openLightbox(i, lang);
-        const cap = document.createElement('div');
-        cap.className = 'caption';
-        cap.textContent = captions[i];
-        item.appendChild(img);
-        item.appendChild(cap);
-        container.appendChild(item);
-      }
-    }
-    createGallery('ko');
-    createGallery('ja');
+    createGallery();
   </script>
 </body>
 </html>
