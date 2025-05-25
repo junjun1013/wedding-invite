@@ -162,9 +162,9 @@
       </div>
     </section>
     <section class="map-section">
-      <h2><h3>찾아오시는 길</h3></h2>
+      <h2 style="text-align:center; font-size:1.6rem;"><span style="font-size:0.8rem; color:#c3956b; display:block;">location</span>찾아오시는 길</h2>
       <p style="text-align:center">서울특별시 영등포구 의사당대로 16<br>여의도 켄싱턴호텔 15층</p>
-      <iframe class="map" style="width:100%; height:300px; border:none; border-radius:10px;" src="https://maps.google.com/maps?q=여의도%20켄싱턴호텔&t=&z=17&ie=UTF8&iwloc=&output=embed"></iframe>
+      <iframe class="map" style="width:100%; height:300px; border:none; border-radius:10px;" src="https://map.kakao.com/link/map/여의도 켄싱턴호텔,37.526066,126.924882"></iframe>
       <p style="text-align:center">
         <a href="https://map.naver.com/v5/search/여의도%20켄싱턴호텔">네이버지도</a> · 
         <a href="https://tmap.co.kr">티맵</a> · 
@@ -173,7 +173,7 @@
     </section>
     <section>
       <h2><span style="font-size:0.8rem; color:#c3956b; display:block;">RSVP</span>참석 여부 전달</h2>
-      <form action="https://docs.google.com/forms/d/e/1FAIpQLScn6Tym4qnwrsZhJ_HwweamOF46O1zPeVVYQEoIirJnOdX-iQ/formResponse" method="POST" target="_blank">
+      <form id="rsvp-form-ko">
         <div class="form-title">📝 이름</div>
         <input type="text" name="entry.339572739" required>
         <div class="form-title">💌 참석 여부</div>
@@ -187,6 +187,7 @@
         <div class="form-title">💬 메모</div>
 <textarea name="entry.1574930353"></textarea><br>
 <button type="submit" class="rsvp-button"><i class="fas fa-paper-plane"></i> 제출하기</button>
+        <div id="submit-ko-msg" class="submit-message" style="display:none; color:#6b4f3b; font-weight:bold; margin-top:1rem; text-align:center;">제출이 완료되었습니다. 감사합니다!</div>
       </form>
     </section>
   </div>
@@ -228,14 +229,12 @@
       <p style="text-align:center">ソウル特別市 永登浦区 議事堂大路 16<br>汝矣島 ケンジントンホテル 15階</p>
       <iframe class="map" style="width:100%; height:300px; border:none; border-radius:10px;" src="https://maps.google.com/maps?q=여의도%20켄싱턴호텔&t=&z=17&ie=UTF8&iwloc=&output=embed"></iframe>
       <p style="text-align:center">
-        <a href="https://map.naver.com/v5/search/여의도%20켄싱턴호텔">Naver Map</a> · 
-        <a href="https://tmap.co.kr">T Map</a> · 
-        <a href="https://kakaonavi.kakao.com">Kakao Navi</a>
+        <a href="https://map.naver.com/v5/search/여의도%20켄싱턴호텔">Naver Map</a> · <a href="https://www.google.com/maps?q=여의도+켄싱턴호텔">Google Map</a> · <a href="https://kakaonavi.kakao.com">Kakao Navi</a>
       </p>
     </section>
     <section>
       <h2><span style="font-size:0.8rem; color:#c3956b; display:block;">RSVP</span>出席のご連絡</h2>
-      <form action="https://docs.google.com/forms/d/e/1FAIpQLScn6Tym4qnwrsZhJ_HwweamOF46O1zPeVVYQEoIirJnOdX-iQ/formResponse" method="POST" target="_blank">
+      <form id="rsvp-form-ja">
         <div class="form-title">📝 お名前</div>
         <input type="text" name="entry.339572739" required>
         <div class="form-title">💌 出欠</div>
@@ -248,7 +247,8 @@
         <label><input type="radio" name="entry.1235960587" value="食事なし"> 食事なし</label>
         <div class="form-title">💬 メッセージ</div>
        <textarea name="entry.1574930353"></textarea><br>
-<button type="submit" class="rsvp-button"><i class="fas fa-paper-plane"></i> 送信する</button>
+<button type="submit" class="rsvp-button">$1</button>
+        <div id="submit-ja-msg" class="submit-message" style="display:none; color:#6b4f3b; font-weight:bold; margin-top:1rem; text-align:center;">送信が完了しました。ありがとうございました！</div>
       </form>
     </section>
   </div>
@@ -328,6 +328,42 @@ loadGallery('thumbnails-ko', 'main-ko');
 loadGallery('thumbnails-ja', 'main-ja');
 updateArrows('ko');
 updateArrows('ja');
+</script>
+<script>
+document.getElementById("rsvp-form-ja").addEventListener("submit", function(event) {
+  event.preventDefault();
+  const form = event.target;
+  const formData = new FormData(form);
+  fetch("https://docs.google.com/forms/d/e/1FAIpQLScn6Tym4qnwrsZhJ_HwweamOF46O1zPeVVYQEoIirJnOdX-iQ/formResponse", {
+    method: "POST",
+    mode: "no-cors",
+    body: formData
+  }).then(() => {
+    document.getElementById("submit-ja-msg").style.display = "block";
+    setTimeout(() => {
+      document.getElementById("submit-ja-msg").style.display = "none";
+    }, 4000);
+    form.reset();
+  });
+});
+</script>
+<script>
+document.getElementById("rsvp-form-ko").addEventListener("submit", function(event) {
+  event.preventDefault();
+  const form = event.target;
+  const formData = new FormData(form);
+  fetch("https://docs.google.com/forms/d/e/1FAIpQLScn6Tym4qnwrsZhJ_HwweamOF46O1zPeVVYQEoIirJnOdX-iQ/formResponse", {
+    method: "POST",
+    mode: "no-cors",
+    body: formData
+  }).then(() => {
+    document.getElementById("submit-ko-msg").style.display = "block";
+    setTimeout(() => {
+      document.getElementById("submit-ko-msg").style.display = "none";
+    }, 4000);
+    form.reset();
+  });
+});
 </script>
 
   <script>
