@@ -280,41 +280,26 @@ function loadGallery(thumbId, mainId) {
       thumbs.appendChild(thumb);
     };
   }
+  updateArrows(thumbId.includes('ko') ? 'ko' : 'ja');
 }
 
 function nextImage(lang) {
-  const next = (currentIndex[lang] + 1);
-  if (next >= maxImages) return;
-  const nextSrc = `img/photo${next + 1}.jpg`;
-  const img = new Image();
-  img.src = nextSrc;
-  img.onload = () => {
-    if (!img.complete || img.naturalWidth === 0) return;
-    document.getElementById(`main-${lang}`).src = nextSrc;
-    currentIndex[lang] = next;
-    updateArrows(lang);
-  };
+  currentIndex[lang] = (currentIndex[lang] + 1) % maxImages;
+  const nextSrc = `img/photo${currentIndex[lang] + 1}.jpg`;
+  document.getElementById(`main-${lang}`).src = nextSrc;
 }
 
 function prevImage(lang) {
-  const prev = (currentIndex[lang] - 1);
-  if (prev < 0) return;
-  const prevSrc = `img/photo${prev + 1}.jpg`;
-  const img = new Image();
-  img.src = prevSrc;
-  img.onload = () => {
-    if (!img.complete || img.naturalWidth === 0) return;
-    document.getElementById(`main-${lang}`).src = prevSrc;
-    currentIndex[lang] = prev;
-    updateArrows(lang);
-  };
+  currentIndex[lang] = (currentIndex[lang] - 1 + maxImages) % maxImages;
+  const prevSrc = `img/photo${currentIndex[lang] + 1}.jpg`;
+  document.getElementById(`main-${lang}`).src = prevSrc;
 }
 
 function updateArrows(lang) {
   const leftBtn = document.querySelector(`#main-${lang}`).parentElement.querySelector('.gallery-controls.left');
   const rightBtn = document.querySelector(`#main-${lang}`).parentElement.querySelector('.gallery-controls.right');
-  leftBtn.style.visibility = currentIndex[lang] === 0 ? 'hidden' : 'visible';
-  rightBtn.style.visibility = currentIndex[lang] === maxImages - 1 ? 'hidden' : 'visible';
+  leftBtn.style.visibility = 'visible';
+  rightBtn.style.visibility = 'visible';
 }
 
 function switchLang(lang) {
@@ -325,8 +310,6 @@ function switchLang(lang) {
 // 초기 로딩
 loadGallery('thumbnails-ko', 'main-ko');
 loadGallery('thumbnails-ja', 'main-ja');
-updateArrows('ko');
-updateArrows('ja');
 </script>
 <script>
 document.getElementById("rsvp-form-ja").addEventListener("submit", function(event) {
