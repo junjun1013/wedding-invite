@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>김준 ♡ 백수연 모바일 청첩장</title>
   <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Noto+Serif+JP&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -29,34 +29,6 @@
     }
     h1 { font-size: 2.2rem; }
     h2 { font-size: 1.6rem; }
-    .map {
-      width: 100%;
-      height: 300px;
-      border: none;
-      border-radius: 10px;
-      margin-top: 1rem;
-    }
-    .slider-container { text-align: center; }
-    .main-image img {
-      max-width: 100%;
-      max-height: 500px;
-      padding: 20px 0;
-      object-fit: contain;
-      background: white;
-    }
-    .thumbnails {
-      display: flex;
-      overflow-x: auto;
-      gap: 0.3rem;
-      justify-content: center;
-      opacity: 0.6;
-      padding-bottom: 1rem;
-    }
-    .thumbnails img {
-      height: 60px;
-      cursor: pointer;
-      border-radius: 4px;
-    }
     .lang-switch {
       display: flex;
       justify-content: center;
@@ -74,44 +46,6 @@
     }
     .lang-section { display: none; }
     .lang-section.active { display: block; }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-    label {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    input[type="text"], input[type="number"], textarea {
-      width: 100%;
-      padding: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-family: inherit;
-    }
-    button[type="submit"] {
-      background: #d7b49e;
-      color: white;
-      padding: 0.7rem;
-      border: none;
-      border-radius: 30px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      align-self: center;
-      width: 50%;
-    }
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    .form-title {
-      font-weight: bold;
-      font-size: 1.1rem;
-      color: #5a4032;
-    }
   </style>
 </head>
 <body>
@@ -123,106 +57,135 @@
   <div id="ko" class="container lang-section active">
     <section>
       <h1>김준 ♡ 백수연</h1>
-      <div class="main-image"><img src="img/photo8.jpg" alt="메인사진" /></div>
+      <div class="main-image"><img src="img/photo8.jpg" alt="메인사진" style="width:100%; max-height:500px; object-fit:contain; padding: 20px 0; background:white;" /></div>
     </section>
-
+    <section>
+      <h2>소중한 당신을 초대합니다</h2>
+      <p style="text-align:center">
+        김성훈 · 차정은의 장남 김준<br>
+        백인기 · 박현숙의 차녀 백수연<br><br>
+        저희 두 사람의 새로운 시작을 함께해 주세요.
+      </p>
+    </section>
     <section>
       <h2>갤러리</h2>
-      <div class="thumbnails" id="thumbnails-ko"></div>
+      <div class="thumbnails" id="thumbnails-ko" style="display:flex; overflow-x:auto; gap:0.3rem; justify-content:center; opacity:0.6; padding-bottom:1rem;"></div>
     </section>
-
     <section>
       <h2>오시는 길</h2>
       <p style="text-align:center">서울특별시 영등포구 의사당대로 16<br>여의도 켄싱턴 호텔 15층</p>
-      <iframe class="map" src="https://maps.google.com/maps?q=여의도%20켄싱턴호텔&t=&z=17&ie=UTF8&iwloc=&output=embed"></iframe>
+      <iframe class="map" style="width:100%; height:300px; border:none; border-radius:10px;" src="https://maps.google.com/maps?q=여의도%20켄싱턴호텔&t=&z=17&ie=UTF8&iwloc=&output=embed"></iframe>
       <p style="text-align:center">
         <a href="https://map.naver.com/v5/search/여의도%20켄싱턴호텔">Naver Map</a><br>
         <a href="https://www.google.com/maps?q=여의도+켄싱턴호텔">Google Map</a>
       </p>
     </section>
-
     <section>
-      <h2>참석 여부 전달</h2>
-      <form action="https://docs.google.com/forms/d/e/your-form-id/formResponse" method="POST" target="_blank">
-        <div class="form-group">
-          <div class="form-title">이름</div>
-          <input type="text" name="entry.123456" required>
-        </div>
-        <div class="form-group">
-          <div class="form-title">참석 여부</div>
-          <label><input type="radio" name="entry.234567" value="참석"> 참석</label>
-          <label><input type="radio" name="entry.234567" value="불참"> 불참</label>
-        </div>
-        <div class="form-group">
-          <div class="form-title">동반가족인수</div>
-          <input type="number" name="entry.345678" min="0">
-        </div>
-        <div class="form-group">
-          <div class="form-title">식사 여부 (12:00~13:00 웨딩홀 코스요리 제공예정)</div>
-          <label><input type="radio" name="entry.456789" value="식사 가능"> 가능</label>
-          <label><input type="radio" name="entry.456789" value="식사 불가"> 불가</label>
-        </div>
-        <div class="form-group">
-          <div class="form-title">메모</div>
-          <textarea name="entry.567890"></textarea>
-        </div>
-        <button type="submit"><i class="fas fa-paper-plane"></i> 제출하기</button>
-      </form>
+      <h2>마음 전하실 분들께</h2>
+      <p style="text-align:center">
+        멀리 일본에서 와주시는 것만으로도 큰 기쁨입니다.<br>
+        항공편 등으로 인한 부담을 잘 알기에,<br>
+        별도의 축의금은 정중히 사양드립니다.<br>
+        편한 마음으로 즐거운 시간 보내시고,<br>
+        잠시 들러 축하해주신다면 그것만으로도 큰 선물이 됩니다.
+      </p>
     </section>
-  </div>
+<section>
+  <h2>참석 여부 전달</h2>
+  <form action="https://docs.google.com/forms/d/e/your-form-id/formResponse" method="POST" target="_blank">
+    <div class="form-group">
+      <div class="form-title">이름</div>
+      <input type="text" name="entry.123456" required>
+    </div>
+    <div class="form-group">
+      <div class="form-title">참석 여부</div>
+      <label><input type="radio" name="entry.234567" value="참석"> 참석</label>
+      <label><input type="radio" name="entry.234567" value="불참"> 불참</label>
+    </div>
+    <div class="form-group">
+      <div class="form-title">동반가족인수</div>
+      <input type="number" name="entry.345678" min="0">
+    </div>
+    <div class="form-group">
+      <div class="form-title">식사 여부 (12:00~13:00 웨딩홀 코스요리 제공예정)</div>
+      <label><input type="radio" name="entry.456789" value="식사 가능"> 가능</label>
+      <label><input type="radio" name="entry.456789" value="식사 불가"> 불가</label>
+    </div>
+    <div class="form-group">
+      <div class="form-title">메모</div>
+      <textarea name="entry.567890"></textarea>
+    </div>
+    <button type="submit"><i class="fas fa-paper-plane"></i> 제출하기</button>
+  </form>
+</section>
+</div>
 
   <div id="ja" class="container lang-section">
     <section>
       <h1>キム・ジュン ♡ ペク・スヨン</h1>
-      <div class="main-image"><img src="img/photo8.jpg" alt="メイン写真" /></div>
+      <div class="main-image"><img src="img/photo8.jpg" alt="メイン写真" style="width:100%; max-height:500px; object-fit:contain; padding: 20px 0; background:white;" /></div>
     </section>
-
+    <section>
+      <h2>ご招待の言葉</h2>
+      <p style="text-align:center">
+        キム・ソンフン・チャ・ジョンウンの長男 キム・ジュン<br>
+        ペク・インギ・パク・ヒョンスクの次女 ペク・スヨン<br><br>
+        私たちの新しい門出にぜひお立ち会いください。
+      </p>
+    </section>
     <section>
       <h2>ギャラリー</h2>
-      <div class="thumbnails" id="thumbnails-ja"></div>
+      <div class="thumbnails" id="thumbnails-ja" style="display:flex; overflow-x:auto; gap:0.3rem; justify-content:center; opacity:0.6; padding-bottom:1rem;"></div>
     </section>
-
     <section>
       <h2>アクセス</h2>
       <p style="text-align:center">ソウル特別市 永登浦区 議事堂大路 16<br>汝矣島 ケンジントンホテル 15階</p>
-      <iframe class="map" src="https://maps.google.com/maps?q=여의도%20켄싱턴호텔&t=&z=17&ie=UTF8&iwloc=&output=embed"></iframe>
+      <iframe class="map" style="width:100%; height:300px; border:none; border-radius:10px;" src="https://maps.google.com/maps?q=여의도%20ケンジントンホテル&t=&z=17&ie=UTF8&iwloc=&output=embed"></iframe>
       <p style="text-align:center">
         <a href="https://map.naver.com/v5/search/여의도%20켄싱턴호텔">Naver Map</a><br>
-        <a href="https://www.google.com/maps?q=여의도+켄싱턴호텔">Google Map</a>
+        <a href="https://www.google.com/maps?q=여의도+ケンジントンホテル">Google Map</a>
       </p>
     </section>
-
     <section>
-      <h2>出席のご連絡</h2>
-      <form action="https://docs.google.com/forms/d/e/your-form-id/formResponse" method="POST" target="_blank">
-        <div class="form-group">
-          <div class="form-title">お名前</div>
-          <input type="text" name="entry.123456" required>
-        </div>
-        <div class="form-group">
-          <div class="form-title">出欠</div>
-          <label><input type="radio" name="entry.234567" value="出席"> 出席</label>
-          <label><input type="radio" name="entry.234567" value="欠席"> 欠席</label>
-        </div>
-        <div class="form-group">
-          <div class="form-title">同行家族人数</div>
-          <input type="number" name="entry.345678" min="0">
-        </div>
-        <div class="form-group">
-          <div class="form-title">食事可否（12:00〜13:00 ウェディングホールでコース料理予定）</div>
-          <label><input type="radio" name="entry.456789" value="食事あり"> あり</label>
-          <label><input type="radio" name="entry.456789" value="食事なし"> なし</label>
-        </div>
-        <div class="form-group">
-          <div class="form-title">メッセージ</div>
-          <textarea name="entry.567890"></textarea>
-        </div>
-        <button type="submit"><i class="fas fa-paper-plane"></i> 送信する</button>
-      </form>
+      <h2>ご祝儀について</h2>
+      <p style="text-align:center">
+        遠く日本からお越しいただくだけでも心から感謝申し上げます。<br>
+        渡航のご負担もあるかと思いますので、<br>
+        ご祝儀はどうぞご無理なさらず、お気遣いなくお願いいたします。<br>
+        ご旅行の合間に少しだけお立ち寄りいただければ、<br>
+        それだけで私たちにとって大きな贈り物です。
+      </p>
     </section>
-  </div>
-
-  <script>
+<section>
+  <h2>出席のご連絡</h2>
+  <form action="https://docs.google.com/forms/d/e/your-form-id/formResponse" method="POST" target="_blank">
+    <div class="form-group">
+      <div class="form-title">お名前</div>
+      <input type="text" name="entry.123456" required>
+    </div>
+    <div class="form-group">
+      <div class="form-title">出欠</div>
+      <label><input type="radio" name="entry.234567" value="出席"> 出席</label>
+      <label><input type="radio" name="entry.234567" value="欠席"> 欠席</label>
+    </div>
+    <div class="form-group">
+      <div class="form-title">同行家族人数</div>
+      <input type="number" name="entry.345678" min="0">
+    </div>
+    <div class="form-group">
+      <div class="form-title">食事可否（12:00〜13:00 ウェディングホールでコース料理予定）</div>
+      <label><input type="radio" name="entry.456789" value="食事あり"> あり</label>
+      <label><input type="radio" name="entry.456789" value="食事なし"> なし</label>
+    </div>
+    <div class="form-group">
+      <div class="form-title">メッセージ</div>
+      <textarea name="entry.567890"></textarea>
+    </div>
+    <button type="submit"><i class="fas fa-paper-plane"></i> 送信する</button>
+  </form>
+</section>
+</div>
+<script>
     function switchLang(lang) {
       document.querySelectorAll('.lang-section').forEach(el => el.classList.remove('active'));
       document.getElementById(lang).classList.add('active');
