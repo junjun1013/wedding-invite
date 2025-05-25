@@ -38,18 +38,15 @@
       border-radius: 10px;
       margin-top: 1rem;
     }
+    .slider-container { overflow: hidden; position: relative; }
+    .slider { display: flex; transition: transform 0.3s ease; }
+    .slide { min-width: 100%; display: flex; justify-content: center; background: #eee; }
+    .slide img { width: auto; height: 400px; object-fit: contain; cursor: pointer; }
     .lang-switch {
       display: flex;
       justify-content: center;
-      margin: 1rem 0;
-    }
-    .lang-switch button {
-      padding: 0.5rem 1.2rem;
-      margin: 0 0.5rem;
-      border: 1px solid #ccc;
-      background: #f7f7f7;
-      cursor: pointer;
-      border-radius: 20px;
+      gap: 1rem;
+      margin: 1rem;
     }
     .lang-section { display: none; }
     .lang-section.active { display: block; }
@@ -61,10 +58,12 @@
     <button onclick="switchLang('ja')">日本語</button>
   </div>
 
-  <div id="lang-ko" class="container lang-section active">
+  <div id="ko" class="container lang-section active">
     <section>
       <h1>김준 ♡ 백수연</h1>
+      <img src="img/photo8.jpg" alt="메인사진" style="width:100%; max-height:500px; object-fit:cover; margin-bottom:1rem;" />
     </section>
+
     <section>
       <h2>소중한 당신을 초대합니다</h2>
       <p>
@@ -73,15 +72,21 @@
         저희 두 사람의 새로운 시작을 함께해 주세요.
       </p>
     </section>
+
+    <section>
+      <h2>갤러리</h2>
+      <div class="slider-container">
+        <div class="slider" id="slider-ko"></div>
+      </div>
+    </section>
+
     <section>
       <h2>오시는 길</h2>
       <p>서울특별시 영등포구 의사당대로 16<br>여의도 켄싱턴 호텔 15층</p>
-      <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.162040450417!2d126.9228652!3d37.5259914" allowfullscreen></iframe>
-      <p>
-        <a href="https://map.naver.com/v5/search/여의도%20켄싱턴호텔">네이버지도에서 보기</a><br>
-        <a href="https://www.google.com/maps?q=여의도+켄싱턴호텔">구글지도에서 보기</a>
-      </p>
+      <iframe class="map" src="https://maps.google.com/maps?q=여의도%20켄싱턴호텔&t=&z=17&ie=UTF8&iwloc=&output=embed"></iframe>
+      <p style="color:#888; font-size:0.9rem">※ 지도가 표시되지 않을 경우 <a href="https://www.google.com/maps?q=여의도+켄싱턴호텔" target="_blank">여기에서 직접 보기</a></p>
     </section>
+
     <section>
       <h2>마음 전하실 분들께</h2>
       <p>
@@ -92,6 +97,7 @@
         잠시 들러 축하해주신다면 그것만으로도 큰 선물이 됩니다.
       </p>
     </section>
+
     <section>
       <h2>참석 여부 전달</h2>
       <form action="https://docs.google.com/forms/d/e/your-form-id/formResponse" method="POST" target="_blank">
@@ -118,27 +124,35 @@
     </section>
   </div>
 
-  <div id="lang-ja" class="container lang-section">
+  <div id="ja" class="container lang-section">
     <section>
       <h1>キム・ジュン ♡ ペク・スヨン</h1>
+      <img src="img/photo8.jpg" alt="メイン写真" style="width:100%; max-height:500px; object-fit:cover; margin-bottom:1rem;" />
     </section>
+
     <section>
       <h2>ご招待の言葉</h2>
       <p>
         キム・ソンフン・チャ・ジョンウンの長男 キム・ジュン<br>
         ペク・インギ・パク・ヒョンスクの次女 ペク・スヨン<br><br>
-        私たちの結婚式にぜひご出席いただければ幸いです。
+        私たちの新しい門出をぜひお祝いください。
       </p>
     </section>
+
+    <section>
+      <h2>ギャラリー</h2>
+      <div class="slider-container">
+        <div class="slider" id="slider-ja"></div>
+      </div>
+    </section>
+
     <section>
       <h2>アクセス</h2>
       <p>韓国 ソウル特別市 永登浦区 議事堂大路16<br>汝矣島 ケンジントンホテル 15階</p>
-      <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.162040450417!2d126.9228652!3d37.5259914" allowfullscreen></iframe>
-      <p>
-        <a href="https://map.naver.com/v5/search/여의도%20켄싱턴호텔">ネイバーマップで見る</a><br>
-        <a href="https://www.google.com/maps?q=여의도+ケンジントンホテル">Googleマップで見る</a>
-      </p>
+      <iframe class="map" src="https://maps.google.com/maps?q=여의도%20켄싱턴호텔&t=&z=17&ie=UTF8&iwloc=&output=embed"></iframe>
+      <p style="color:#888; font-size:0.9rem">※ 地図が表示されない場合は <a href="https://www.google.com/maps?q=여의도+켄싱턴호텔" target="_blank">こちらでご確認ください</a></p>
     </section>
+
     <section>
       <h2>ご祝儀について</h2>
       <p>
@@ -149,6 +163,7 @@
         それだけで私たちにとって大きな贈り物です。
       </p>
     </section>
+
     <section>
       <h2>出席のご連絡</h2>
       <form action="https://docs.google.com/forms/d/e/your-form-id/formResponse" method="POST" target="_blank">
@@ -178,8 +193,24 @@
   <script>
     function switchLang(lang) {
       document.querySelectorAll('.lang-section').forEach(el => el.classList.remove('active'));
-      document.getElementById('lang-' + lang).classList.add('active');
+      document.getElementById(lang).classList.add('active');
     }
+
+    const availablePhotos = Array.from({length: 30}, (_, i) => i + 1);
+    const sliderKo = document.getElementById('slider-ko');
+    const sliderJa = document.getElementById('slider-ja');
+    availablePhotos.forEach(i => {
+      const koSlide = document.createElement('div');
+      koSlide.className = 'slide';
+      const koImg = document.createElement('img');
+      koImg.src = `img/photo${i}.jpg`;
+      koImg.alt = `photo${i}`;
+      koSlide.appendChild(koImg);
+      sliderKo.appendChild(koSlide);
+
+      const jaSlide = koSlide.cloneNode(true);
+      sliderJa.appendChild(jaSlide);
+    });
   </script>
 </body>
 </html>
