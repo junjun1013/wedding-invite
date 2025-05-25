@@ -329,3 +329,22 @@ loadGallery('thumbnails-ja', 'main-ja');
 updateArrows('ko');
 updateArrows('ja');
 </script>
+
+  <script>
+function updateThumbnailFade(lang) {
+  const thumbs = document.getElementById(`thumbnails-${lang}`);
+  if (!thumbs) return;
+  const scrollLeft = thumbs.scrollLeft;
+  const maxScroll = thumbs.scrollWidth - thumbs.clientWidth;
+  thumbs.classList.toggle('hide-left', scrollLeft <= 5);
+  thumbs.classList.toggle('hide-right', scrollLeft >= maxScroll - 5);
+}
+
+['ko', 'ja'].forEach(lang => {
+  const thumbs = document.getElementById(`thumbnails-${lang}`);
+  if (thumbs) {
+    thumbs.addEventListener('scroll', () => updateThumbnailFade(lang));
+    window.addEventListener('load', () => updateThumbnailFade(lang));
+  }
+});
+</script>
