@@ -375,3 +375,9 @@ function updateThumbnailFade(lang) {
   }
 });
 </script>
+<script>
+function switchLang(lang) {
+  document.querySelectorAll('.lang-section').forEach(el => el.classList.remove('active'));
+  document.getElementById(lang).classList.add('active');
+}
+</script>
