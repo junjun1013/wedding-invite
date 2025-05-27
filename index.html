@@ -76,13 +76,6 @@
       margin-top: 1.5rem;
       color: #5a4032;
     }
-    .map-section h3::before {
-      content: "LOCATION\A";
-      font-size: 0.8rem;
-      color: #c3956b;
-      white-space: pre;
-      display: block;
-    }
     .gallery-controls {
       position: absolute;
       top: 50%;
@@ -133,8 +126,7 @@
     <section>
       <h2><span style="font-size:0.8rem; color:#c3956b; display:block;">invitation</span>초대합니다</h2>
       <div class="main-image">
-        <img src="img/main.jpg" alt="" style="width:100%; display:block; object-fit:cover; margin:0; padding:0;" />
-
+        <img src="img/main.jpg" alt="" style="width:100vw; height:auto; display:block; margin:0; padding:0; object-fit:cover;" />
         <h1>김준 ♡ 백수연</h1>
         <p style="text-align:center; margin-top: 0.5rem; font-size: 1.1rem; color: #6b4f3b;">2025년 9월 20일 토요일 11:30 ~ 13:00<br>여의도 켄싱턴 호텔 15F</p>
       </div>
@@ -225,7 +217,8 @@
       </div>
     </section>
     <section class="map-section">
-      <h2><h3>アクセス</h3></h2>
+      <h2 style="text-align:center; font-size:1.6rem;"><span style="font-size:0.8rem; color:#c3956b; display:block;">location</span>アクセス</h2>
+
       <p style="text-align:center">ソウル特別市 永登浦区 議事堂大路 16<br>汝矣島 ケンジントンホテル 15階</p>
       <iframe class="map" style="width:100%; height:300px; border:none; border-radius:10px;" src="https://maps.google.com/maps?q=여의도%20켄싱턴호텔&t=&z=17&ie=UTF8&iwloc=&output=embed"></iframe>
       <p style="text-align:center">
