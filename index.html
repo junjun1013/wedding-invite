@@ -183,7 +183,7 @@
     </section>
    
     <section>
-  <h2><span style="font-size:0.8rem; color:#c3956b; display:block;">gift</span>신랑 & 신부에게 마음 전하기</h2>
+  <h2><span style="font-size:0.8rem; color:#c3956b; display:block;">A Token of blessing</span>신랑 & 신부에게 마음 전하기</h2>
   <div style="text-align:center; margin-top:1rem;">
     <button onclick="showAccount('groom')" style="background:#6b4f3b; color:white; padding:0.8rem 1.4rem; border:none; border-radius:30px; font-size:1rem; cursor:pointer; margin:0.5rem;">
       <i class="fas fa-gift"></i> 신랑측 계좌번호
@@ -194,12 +194,13 @@
   </div>
 </section>
 
-<div id="account-popup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:white; border:1px solid #ccc; padding:1rem; border-radius:10px; z-index:9999; width:80%; max-width:400px; box-shadow:0 4px 10px rgba(0,0,0,0.3);">
-  <div id="account-list" style="font-size:0.9rem; color:#444;"></div>
+<div id="account-popup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:white; border:1px solid #ccc; padding:1rem; border-radius:10px; z-index:9999; width:90%; max-width:400px; box-shadow:0 4px 10px rgba(0,0,0,0.3);">
+  <div id="account-list" style="font-size:0.95rem; color:#444;"></div>
   <div style="text-align:center; margin-top:1rem;">
-    <button onclick="document.getElementById('account-popup').style.display='none'" style="background:#6b4f3b; color:white; padding:0.5rem 1rem; border:none; border-radius:20px; cursor:pointer;">닫기</button>
+    <button onclick="document.getElementById('account-popup').style.display='none'" style="background:#6b4f3b; color:white; padding:0.5rem 1.2rem; border:none; border-radius:20px; cursor:pointer;">닫기</button>
   </div>
 </div>
+
 
   </div>
 
@@ -400,40 +401,29 @@ function showAccount(type) {
   let html = "";
 
   if(type === 'groom') {
-    html += `
-      <div style="margin-bottom:0.5rem;">
-        <strong>신랑 계좌</strong><br>
-        국민은행 (예금주 : 김준)<br>
-        29740204110453 <button onclick="copyText('29740204110453')">복사하기</button>
-      </div>
-      <div style="margin-bottom:0.5rem;">
-        <strong>신랑 혼주 계좌</strong><br>
-        국민은행 (예금주 : 차정은)<br>
-        61160204043548 <button onclick="copyText('61160204043548')">복사하기</button>
-      </div>
-    `;
+    html += renderAccountRow("🤵 신랑 계좌", "29740204110453");
+    html += renderAccountRow("👨‍👩‍👦 신랑 혼주 계좌", "61160204043548");
   } else if(type === 'bride') {
-    html += `
-      <div style="margin-bottom:0.5rem;">
-        <strong>신부 계좌</strong><br>
-        신한은행 (예금주 : 백수연)<br>
-        110396971654 <button onclick="copyText('110396971654')">복사하기</button>
-      </div>
-      <div style="margin-bottom:0.5rem;">
-        <strong>신부 혼주 계좌</strong><br>
-        농협은행 (예금주 : 백인기)<br>
-        22703852156138 <button onclick="copyText('22703852156138')">복사하기</button>
-      </div>
-      <div style="margin-bottom:0.5rem;">
-        <strong>신부 혼주 계좌</strong><br>
-        농협은행 (예금주 : 박현숙)<br>
-        22703851097368 <button onclick="copyText('22703851097368')">복사하기</button>
-      </div>
-    `;
+    html += renderAccountRow("👰 신부 계좌", "110396971654");
+    html += renderAccountRow("👨‍👩‍👧 신부 혼주 계좌", "22703852156138");
+    html += renderAccountRow("👩‍👧 신부 혼주 계좌", "22703851097368");
   }
 
   list.innerHTML = html;
   popup.style.display = 'block';
+}
+
+function renderAccountRow(title, account) {
+  return `
+    <div style="margin-bottom:0.7rem;">
+      <div style="display:flex; justify-content:space-between; align-items:center; font-weight:bold;">
+        <span>${title}</span>
+        <button onclick="copyText('${account}')" style="background:#555; color:white; padding:0.3rem 0.8rem; border:none; border-radius:20px; font-size:0.85rem; cursor:pointer;">복사하기</button>
+      </div>
+      <div style="margin:0.3rem 0;">${account}</div>
+      <div style="height:1px; background:#ddd;"></div>
+    </div>
+  `;
 }
 
 function copyText(text) {
@@ -444,3 +434,4 @@ function copyText(text) {
   });
 }
 </script>
+
