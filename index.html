@@ -394,6 +394,7 @@ function switchLang(lang) {
   document.getElementById(lang).classList.add('active');
 }
 </script>
+  
 <script>
 function showAccount(type) {
   const popup = document.getElementById("account-popup");
@@ -401,26 +402,27 @@ function showAccount(type) {
   let html = "";
 
   if(type === 'groom') {
-    html += renderAccountRow("🤵 신랑 계좌", "29740204110453");
-    html += renderAccountRow("👨‍👩‍👦 신랑 혼주 계좌", "61160204043548");
+    html += renderAccountRow("🤵 신랑 계좌", "국민은행 (예금주 : 김준)", "29740204110453");
+    html += renderAccountRow("👨‍👩‍👦 신랑 혼주 계좌", "국민은행 (예금주 : 차정은)", "61160204043548");
   } else if(type === 'bride') {
-    html += renderAccountRow("👰 신부 계좌", "110396971654");
-    html += renderAccountRow("👨‍👩‍👧 신부 혼주 계좌", "22703852156138");
-    html += renderAccountRow("👩‍👧 신부 혼주 계좌", "22703851097368");
+    html += renderAccountRow("👰 신부 계좌", "신한은행 (예금주 : 백수연)", "110396971654");
+    html += renderAccountRow("👨‍👩‍👧 신부 혼주 계좌", "농협은행 (예금주 : 백인기)", "22703852156138");
+    html += renderAccountRow("👨‍👩‍👧 신부 혼주 계좌", "농협은행 (예금주 : 박현숙)", "22703851097368");
   }
 
   list.innerHTML = html;
   popup.style.display = 'block';
 }
 
-function renderAccountRow(title, account) {
+function renderAccountRow(title, bankInfo, account) {
   return `
     <div style="margin-bottom:0.7rem;">
       <div style="display:flex; justify-content:space-between; align-items:center; font-weight:bold;">
         <span>${title}</span>
         <button onclick="copyText('${account}')" style="background:#555; color:white; padding:0.3rem 0.8rem; border:none; border-radius:20px; font-size:0.85rem; cursor:pointer;">복사하기</button>
       </div>
-      <div style="margin:0.3rem 0;">${account}</div>
+      <div style="margin:0.2rem 0;">${bankInfo}</div>
+      <div style="margin-bottom:0.2rem;">${account}</div>
       <div style="height:1px; background:#ddd;"></div>
     </div>
   `;
@@ -434,4 +436,5 @@ function copyText(text) {
   });
 }
 </script>
+
 
