@@ -181,6 +181,26 @@
         <div id="submit-ko-msg" class="submit-message" style="display:none; color:#6b4f3b; font-weight:bold; margin-top:1rem; text-align:center;">제출이 완료되었습니다. 감사합니다!</div>
       </form>
     </section>
+   
+    <section>
+  <h2><span style="font-size:0.8rem; color:#c3956b; display:block;">gift</span>신랑 & 신부에게 마음 전하기</h2>
+  <div style="text-align:center; margin-top:1rem;">
+    <button onclick="showAccount('groom')" style="background:#6b4f3b; color:white; padding:0.8rem 1.4rem; border:none; border-radius:30px; font-size:1rem; cursor:pointer; margin:0.5rem;">
+      <i class="fas fa-gift"></i> 신랑측 계좌번호
+    </button>
+    <button onclick="showAccount('bride')" style="background:#6b4f3b; color:white; padding:0.8rem 1.4rem; border:none; border-radius:30px; font-size:1rem; cursor:pointer; margin:0.5rem;">
+      <i class="fas fa-gift"></i> 신부측 계좌번호
+    </button>
+  </div>
+</section>
+
+<div id="account-popup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:white; border:1px solid #ccc; padding:1rem; border-radius:10px; z-index:9999; width:80%; max-width:400px; box-shadow:0 4px 10px rgba(0,0,0,0.3);">
+  <div id="account-list" style="font-size:0.9rem; color:#444;"></div>
+  <div style="text-align:center; margin-top:1rem;">
+    <button onclick="document.getElementById('account-popup').style.display='none'" style="background:#6b4f3b; color:white; padding:0.5rem 1rem; border:none; border-radius:20px; cursor:pointer;">닫기</button>
+  </div>
+</div>
+
   </div>
 
   <div id="ja" class="container lang-section">
@@ -371,5 +391,56 @@ function updateThumbnailFade(lang) {
 function switchLang(lang) {
   document.querySelectorAll('.lang-section').forEach(el => el.classList.remove('active'));
   document.getElementById(lang).classList.add('active');
+}
+</script>
+<script>
+function showAccount(type) {
+  const popup = document.getElementById("account-popup");
+  const list = document.getElementById("account-list");
+  let html = "";
+
+  if(type === 'groom') {
+    html += `
+      <div style="margin-bottom:0.5rem;">
+        <strong>신랑 계좌</strong><br>
+        국민은행 (예금주 : 김준)<br>
+        29740204110453 <button onclick="copyText('29740204110453')">복사하기</button>
+      </div>
+      <div style="margin-bottom:0.5rem;">
+        <strong>신랑 혼주 계좌</strong><br>
+        국민은행 (예금주 : 차정은)<br>
+        61160204043548 <button onclick="copyText('61160204043548')">복사하기</button>
+      </div>
+    `;
+  } else if(type === 'bride') {
+    html += `
+      <div style="margin-bottom:0.5rem;">
+        <strong>신부 계좌</strong><br>
+        신한은행 (예금주 : 백수연)<br>
+        110396971654 <button onclick="copyText('110396971654')">복사하기</button>
+      </div>
+      <div style="margin-bottom:0.5rem;">
+        <strong>신부 혼주 계좌</strong><br>
+        농협은행 (예금주 : 백인기)<br>
+        22703852156138 <button onclick="copyText('22703852156138')">복사하기</button>
+      </div>
+      <div style="margin-bottom:0.5rem;">
+        <strong>신부 혼주 계좌</strong><br>
+        농협은행 (예금주 : 박현숙)<br>
+        22703851097368 <button onclick="copyText('22703851097368')">복사하기</button>
+      </div>
+    `;
+  }
+
+  list.innerHTML = html;
+  popup.style.display = 'block';
+}
+
+function copyText(text) {
+  navigator.clipboard.writeText(text).then(() => {
+    alert("계좌번호가 복사되었습니다: " + text);
+  }).catch(() => {
+    alert("복사 실패. 브라우저 권한을 확인하세요.");
+  });
 }
 </script>
